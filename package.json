@@ -1,0 +1,15 @@
+{
+  "name": "express-geosupport",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-geosupport": "0.0.0"
+  }
+}
