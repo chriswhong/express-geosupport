@@ -3,43 +3,18 @@ const geosupport = require('node-geosupport');
 
 const router = express.Router();
 
-router.get('/1B', (req, res) => {
-  const { houseNumber, streetName, boroughCode } = req.query;
-
+router.get('/:function_name', (req, res) => {
   try {
-    geosupport['1B']({
-      'House Number - Display Format': houseNumber,
-      'Street Name-1': streetName,
-      'ZIP Code Input': '',
-      'Borough Code-1': boroughCode,
-    })
+    geosupport[req.params.function_name](req.query)
       .then((response) => {
         res.json(response);
       });
   } catch (e) {
     res.json({
-      error: 'something went wrong'
+      error: 'something went wrong',
+      description: e,
     })
   }
-
 });
-
-router.get('/BL', (req, res) => {
-  const { bbl } = req.query;
-  try {
-    geosupport.BL({
-      'BOROUGH BLOCK LOT (BBL)': bbl,
-    })
-      .then((response) => {
-        res.json(response);
-      });
-  } catch (e) {
-    res.json({
-      error: 'something went wrong'
-    })
-  }
-
-});
-
 
 module.exports = router;
